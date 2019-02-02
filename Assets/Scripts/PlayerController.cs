@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour {
         {
             Invincible = true;
         }
+        else
+        {
+            Invincible = false;
+        }
     }
 
     public void SetPlayerCount(PlayerCount Count)

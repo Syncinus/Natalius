@@ -654,7 +654,7 @@ MonoBehaviour:
   OrbStorage: {fileID: 2106070455}
   Healthbar: {fileID: 248780124}
   IsOriginal: 1
-  Invincible: 1
+  Invincible: 0
   Original: {fileID: 0}
 --- !u!61 &284719684
 BoxCollider2D:

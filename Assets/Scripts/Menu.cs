@@ -11,16 +11,16 @@ public class Menu : MonoBehaviour {
 
     public void OnStartPressed(int LevelIndex)
     {
+        GameSettings.InvincibleMode = false;
         GameSettings.GameSpeed = float.Parse(GameSpeed.text);
         SceneManager.LoadScene(LevelIndex);
-        GameSettings.InvincibleMode = false;
     }
 
     public void OnStartPressedInvincible(int LevelIndex)
     {
+        GameSettings.InvincibleMode = true;
         GameSettings.GameSpeed = float.Parse(GameSpeed.text);
         SceneManager.LoadScene(LevelIndex);
-        GameSettings.InvincibleMode = true;
     }
 	
 }

@@ -375,7 +375,7 @@ public class Matrix : GameController {
 
         #region Deep
         SetToDeepScheme();
-        yield return StartCoroutine(WaitForTime(0.25f));
+        yield return StartCoroutine(WaitForTime(0.5f));
         WarningRectangle(Color.black, new Vector2(5f, 100f), Vector2.zero, 2, 1.1f, 90f);
         ChoppingBeam(Color.black, GetPlayerDirection() - 45f, 0.5f, 0.25f, false, 3f);
         ChoppingBeam(Color.black, GetPlayerDirection(), 0.5f, 0.25f, false, 3f);
