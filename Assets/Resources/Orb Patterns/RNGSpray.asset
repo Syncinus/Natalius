@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3eadd1e808ac0344b1993fcc98d9499, type: 3}
+  m_Name: RNGSpray
+  m_EditorClassIdentifier: 
+  Object:
+    Name: Orb
+    Object: {fileID: 400000, guid: 44f9aefa3a635184192bba851a5f66ad, type: 3}
+    Size: 1
+    Speed: 3
+    Delay: 0.05
+    Direction: 0
+    Order: 1
+  Times: 20
+  RandomLimits: {x: 0, y: 460}
