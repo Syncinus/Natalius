@@ -119,7 +119,7 @@ public class GameController : MonoBehaviour {
         LoopingCircle.transform.SetParent(Circles);
         LoopingCircle.transform.localScale = new Vector3(102.1f, 102.1f, 1f);
         Looper LoopingCircleRotate = LoopingCircle.AddComponent<Looper>();
-        LoopingCircleRotate.Angle = 5f;
+        LoopingCircleRotate.Angle = 3f;
         LoopingCircleRotate.Core = transform;
         Transform LoopingCircleColor1 = Instantiate(Resources.Load<Transform>("Art/Customizable/Circles/LoopingRingC1"), LoopingCircle.transform);
         LoopingCircleColor1.name = "Color1";
@@ -133,7 +133,7 @@ public class GameController : MonoBehaviour {
         EnclosingCircle.transform.localScale = new Vector3(76.10001f, 76.10001f, 1f);
         Looper EnclosingCircleRotate = EnclosingCircle.AddComponent<Looper>();
         EnclosingCircleRotate.Core = transform;
-        EnclosingCircleRotate.Angle = 5f;
+        EnclosingCircleRotate.Angle = -3.5f;
         Transform EnclosingCircleColor1 = Instantiate(Resources.Load<Transform>("Art/Customizable/Circles/EnclosingRingC1"), EnclosingCircle.transform);
         EnclosingCircleColor1.name = "Color1";
         EnclosingCircleColor1.GetComponent<SpriteRenderer>().sortingOrder = -1;
@@ -146,7 +146,7 @@ public class GameController : MonoBehaviour {
         MiddleCircle.transform.localScale = new Vector3(76.6f, 76.6f, 1f);
         Looper MiddleCircleRotate = MiddleCircle.AddComponent<Looper>();
         MiddleCircleRotate.Core = transform;
-        MiddleCircleRotate.Angle = 5f;
+        MiddleCircleRotate.Angle = 4f;
         Transform MiddleCircleColor1 = Instantiate(Resources.Load<Transform>("Art/Customizable/Circles/MiddleRingC1"), MiddleCircle.transform);
         MiddleCircleColor1.name = "Color1";
         MiddleCircleColor1.GetComponent<SpriteRenderer>().sortingOrder = -1;
@@ -159,7 +159,7 @@ public class GameController : MonoBehaviour {
         CenterCircle.transform.localScale = new Vector3(77.7f, 77.7f, 1f);
         Looper CenterCircleRotate = CenterCircle.AddComponent<Looper>();
         CenterCircleRotate.Core = transform;
-        CenterCircleRotate.Angle = 5f;
+        CenterCircleRotate.Angle = -4.5f;
         Transform CenterCircleColor1 = Instantiate(Resources.Load<Transform>("Art/Customizable/Circles/CenterRingC1"), CenterCircle.transform);
         CenterCircleColor1.name = "Color1";
         CenterCircleColor1.GetComponent<SpriteRenderer>().sortingOrder = -1;
@@ -243,6 +243,7 @@ public class GameController : MonoBehaviour {
         Transform CompletionDisplay = Instantiate(Resources.Load<Transform>("CompletionDisplay"));
         CompletionDisplay.transform.SetParent(TheCanvas.transform);
         YouWon = CompletionDisplay.gameObject;
+        RankText = CompletionDisplay.Find("Display").Find("Ranking").GetComponent<TextMeshProUGUI>();
 
         // Finally we set up our player
         Transform PlayerTrans = Resources.Load<Transform>("Art/Customizable/Player");
@@ -963,9 +964,9 @@ public class GameController : MonoBehaviour {
             foreach (float Angle in FormationPatternDirection(Direction, Pattern))
             {
                 Transform NewOrb = Orb(Coloring, Size, 2);
-                NewOrb.rotation = Quaternion.Euler(new Vector3(0, 0, -Direction));
-                NewOrb.transform.Translate(Vector3.up * 100, Space.Self);
-                Launch(NewOrb, -Speed, Angle);
+                NewOrb.rotation = Quaternion.Euler(new Vector3(0, 0, Angle));
+                NewOrb.transform.Translate(Vector3.up * 75, Space.Self);
+                Launch(NewOrb, -Speed, -Angle);
                 if (Delay > 0)
                 {
                     yield return StartCoroutine(Wait(Delay));
@@ -993,9 +994,9 @@ public class GameController : MonoBehaviour {
             foreach (float Angle in FormationPatternDirection(Direction, Pattern))
             {
                 Transform NewOrb = Orb(Coloring, Size, 2);
-                NewOrb.rotation = Quaternion.Euler(new Vector3(0, 0, -Direction));
-                NewOrb.transform.Translate(Vector3.up * 100, Space.Self);
-                Launch(NewOrb, -Speed, Angle);
+                NewOrb.rotation = Quaternion.Euler(new Vector3(0, 0, Angle));
+                NewOrb.transform.Translate(Vector3.up * 75, Space.Self);
+                Launch(NewOrb, -Speed, -Angle);
                 if (Delay > 0)
                 {
                     yield return StartCoroutine(Wait(Delay));
@@ -1064,7 +1065,8 @@ public class GameController : MonoBehaviour {
         Transform Warn = Square(new Color32(Coloring.r, Coloring.g, Coloring.b, 128), Vector2.zero, Order, false);
         Size(Warn, Scale * 0.99f, 0.25f, false);
         Warn.position = Position;
-        Warn.rotation = Quaternion.Euler(new Vector3(0f, 0f, Angle));
+        //Warn.rotation = Quaternion.Euler(new Vector3(0f, 0f, Angle));
+        Warn.RotateAround(transform.position, new Vector3(0f, 0f, -1f), Angle);
         yield return StartCoroutine(Wait(Lifetime));
         Destroy(Warn.gameObject);
         //Size(Warn, new Vector2(0f, Scale.y), 0.1f, true);

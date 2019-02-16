@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
 		transform.Translate(Vector3.up * Time.deltaTime * Speed * 10, Space.Self);
         DistanceTravelled += Vector3.Distance(transform.position, LastPosition);
         LastPosition = transform.position;
-        if (DistanceTravelled > 100)
+        if (DistanceTravelled > 75)
         {
             Destroy(gameObject);
         }
